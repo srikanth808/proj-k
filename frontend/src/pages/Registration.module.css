@@ -1,0 +1,35 @@
+.registrationCard {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.required {
+  color: var(--error);
+}
+
+.messageContainer {
+  margin-top: 1.5rem;
+}
+
+.messageIcon {
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+}
+
+.submitButton {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.selectField {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--border-color);
+}

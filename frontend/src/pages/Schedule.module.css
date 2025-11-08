@@ -1,0 +1,232 @@
+.scheduleCard {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.statsValue {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.statsValueError {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--error);
+}
+
+.statsValueAccent {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-secondary);
+}
+
+.summaryCard {
+  background: var(--bg-glass);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.summaryTitle {
+  color: var(--accent-primary);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.actionButton {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.playerCell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.vsText {
+  color: var(--text-muted);
+}
+
+.unassignedText {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.timeContainer {
+  font-size: 0.9rem;
+}
+
+.timeDate {
+  font-weight: 500;
+}
+
+.matchNumber {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.actionGrid {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.scheduleButton {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.scheduleContainer {
+  padding: 1rem;
+}
+
+.card {
+  background: var(--bg-light);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.cardGlass {
+  background: var(--bg-glass);
+}
+
+.button {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.buttonLive {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: var(--accent-secondary);
+  color: white;
+}
+
+.buttonStart {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: var(--accent-primary);
+  color: white;
+}
+
+.buttonOutline {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.flexRow {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.vsText {
+  color: var(--text-muted);
+}
+
+.unassignedText {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.timeContainer {
+  font-size: 0.9rem;
+}
+
+.timeDate {
+  font-weight: 500;
+}
+
+.matchNumber {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.summaryTitle {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--accent-primary);
+}
+
+.statValue {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.statValueLive {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--error);
+}
+
+.statValueComplete {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-secondary);
+}
+
+.statusBadgeBase {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.statusBadgeScheduled {
+  background: var(--bg-accent);
+  color: var(--text-primary);
+}
+
+.statusBadgeLive {
+  background: var(--error);
+  color: white;
+}
+
+.statusBadgeCompleted {
+  background: var(--accent-secondary);
+  color: white;
+}
+
+.summarySection {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: var(--bg-glass);
+  border-radius: 8px;
+}
+
+.summaryTitle {
+  color: var(--accent-primary);
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}

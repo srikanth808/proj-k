@@ -1,0 +1,36 @@
+.playerCard {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.playerInfo {
+  display: flex;
+  flex: 1;
+}
+
+.playerName {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.playerBadge {
+  color: white;
+  border: none;
+}
+
+.statsGrid {
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.statRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rankingPoints {
+  color: var(--text-primary);
+  font-weight: 600;
+}

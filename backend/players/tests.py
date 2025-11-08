@@ -1,0 +1,125 @@
+from django.test import TestCase
+from django.urls import reverse
+from django.contrib.auth import get_user_model
+from rest_framework.test import APIClient
+from rest_framework import status
+from .models import Player
+from datetime import datetime
+
+class PlayerTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        # Create test user and authenticate
+        self.user = get_user_model().objects.create_user(
+            email='testuser@example.com',
+            password='testpass123'
+        )
+        self.client.force_authenticate(user=self.user)
+        self.player_data = {
+            'name': 'Test Player',
+            'age': 25,
+            'email': 'test@example.com',
+            'phone': '1234567890',
+            'category': 'MS'
+        }
+        self.player = Player.objects.create(**self.player_data)
+
+    def test_create_player(self):
+        """Test creating a new player"""
+        url = reverse('player-list')
+        data = {
+            'name': 'New Player',
+            'age': 26,
+            'email': 'new@example.com',
+            'phone': '0987654321',
+            'category': 'MS'
+        }
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(Player.objects.count(), 2)
+
+    def test_create_player_invalid_data(self):
+        """Test creating a player with invalid data"""
+        url = reverse('player-list')
+        data = {
+            'name': '',  # Invalid: empty name
+            'age': 'invalid',  # Invalid: non-numeric age
+            'email': 'invalid-email',  # Invalid: incorrect email format
+            'phone': '123',  # Invalid: too short
+            'category': 'INVALID'  # Invalid: incorrect category
+        }
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_get_player_list(self):
+        """Test retrieving player list"""
+        # Ensure a clean slate and create exactly one player for this test
+        Player.objects.all().delete()
+        Player.objects.create(
+            name="Test Player",
+            age=25,
+            email="test@test.com",
+            phone="1234567890",
+            category="MS"
+        )
+
+        url = reverse('player-list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        # DRF may return paginated result dict {count, next, previous, results}
+        if isinstance(response.data, dict) and 'results' in response.data:
+            self.assertEqual(response.data['count'], 1)
+            self.assertEqual(len(response.data['results']), 1)
+        else:
+            self.assertEqual(len(response.data), 1)
+
+    def test_get_player_detail(self):
+        """Test retrieving player detail"""
+        url = reverse('player-detail', kwargs={'pk': self.player.id})
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['name'], self.player_data['name'])
+
+    def test_update_player(self):
+        """Test updating a player"""
+        url = reverse('player-detail', kwargs={'pk': self.player.id})
+        update_data = {
+            'name': 'Updated Name',
+            'ranking': 1000
+        }
+        response = self.client.patch(url, update_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.player.refresh_from_db()
+        self.assertEqual(self.player.name, 'Updated Name')
+        self.assertEqual(self.player.ranking, 1000)
+
+    def test_delete_player(self):
+        """Test deleting a player"""
+        url = reverse('player-detail', kwargs={'pk': self.player.id})
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(Player.objects.count(), 0)
+
+    def test_player_statistics(self):
+        """Test player statistics calculation"""
+        # Update player with ranking
+        self.player.ranking = 1000
+        self.player.save()
+
+        url = reverse('player-detail', kwargs={'pk': self.player.id})
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['ranking'], 1000)
+
+    def test_unique_email_constraint(self):
+        """Test that email addresses must be unique"""
+        url = reverse('player-list')
+        data = {
+            'name': 'Another Player',
+            'age': 27,
+            'email': 'test@example.com',  # Same email as existing player
+            'phone': '9876543210',
+            'category': 'MS'
+        }
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)

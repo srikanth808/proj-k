@@ -1,0 +1,47 @@
+.mainTitle {
+  margin-bottom: 1.5rem;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+}
+
+.mainDescription {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  margin-bottom: 2.5rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+}
+
+.actionContainer {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.statsContainer {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+.statsIndicator {
+  width: 12px;
+  height: 12px;
+}
+
+.errorValue {
+  color: var(--error);
+}
+
+.secondaryValue {
+  color: var(--accent-secondary);
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

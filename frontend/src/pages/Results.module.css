@@ -1,0 +1,74 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.metaText {
+  font-size: 0.9rem;
+}
+
+.actionGroup {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.matchNumber {
+  font-weight: 600;
+}
+
+.playerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.playerName {
+  font-weight: 500;
+}
+
+.vsText {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.winnerIcon {
+  font-size: 1.25rem;
+}
+
+.matchBadge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+}
+
+.matchTime {
+  font-size: 0.9rem;
+}
+
+.matchDate {
+  font-weight: 500;
+}
+
+.summaryCard {
+  background: var(--bg-glass);
+}
+
+.summaryTitle {
+  color: var(--accent-primary);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.statsValue {
+  font-size: 2rem;
+}
+
+.statsSecondary {
+  color: var(--accent-secondary);
+}
+
+.statsTertiary {
+  color: var(--accent-tertiary);
+}
